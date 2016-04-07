@@ -3,7 +3,7 @@ if [ "$1a" == "a" ]; then
 	exit;
 fi;
 branch=master
-if [ "$2a" != "a"]; then
+if [ "$2a" != "a" ]; then
 	branch=$2
 fi
 git add .
