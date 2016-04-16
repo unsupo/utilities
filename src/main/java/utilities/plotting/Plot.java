@@ -2,11 +2,16 @@ package utilities.plotting;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
@@ -18,13 +23,15 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
 public class Plot extends ApplicationFrame{
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		new Plot(new double[]{1,2},new double[]{1,2}).setType(Plot.JUST_LINE)
 				.addSeries("p1", Plot.JUST_POINTS, new double[]{3,4}, new double[]{1,5})
 				.addSeries("p3", Plot.JUST_POINTS, new double[]{3,4,5,5}, new double[]{1,5,3,4})
 				.addSeries("p2", Plot.JUST_POINTS, new double[]{3,4,3,4}, new double[]{1,5,1,1})
-				.showPlot();
+				.savePlot("C:/Users/jarndt/Desktop/a.png");
+//				.showPlot();
 	}
+
 	public static final String JUST_POINTS = "points", LINES = "linesPoint", JUST_LINE = "line";
 	private String[] allowedTypes = {JUST_LINE,JUST_POINTS,LINES};
 	
@@ -92,8 +99,8 @@ public class Plot extends ApplicationFrame{
 //		dataset.addSeries(s1);
 	}
 	public void showPlot(){
-        final XYDataset dataset = createDataset();
-        final JFreeChart chart = createChart(dataset);
+        final XYDataset dataset = getDataset();
+        final JFreeChart chart = getChart(dataset);
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(size);
         setContentPane(chartPanel);
@@ -101,14 +108,14 @@ public class Plot extends ApplicationFrame{
 		pack();
 		setVisible(true);
 	}
-	private XYDataset createDataset() {
+	private XYDataset getDataset() {
 		final XYSeriesCollection dataset = new XYSeriesCollection();
 		for(String key : series.keySet())
 			dataset.addSeries(series.get(key));
 		
 		return dataset;
 	}
-	private JFreeChart createChart(final XYDataset dataset) {
+	private JFreeChart getChart(final XYDataset dataset) {
         
         // create the chart...
         final JFreeChart chart = ChartFactory.createXYLineChart(
@@ -157,5 +164,7 @@ public class Plot extends ApplicationFrame{
 			renderer.setSeriesShapesVisible(index, false);
 		
 	}
-	
+	private void savePlot(String path) throws IOException {
+		ChartUtilities.writeChartAsPNG(new FileOutputStream(new File(path)),getChart(getDataset()), size.width,size.height);
+	}
 }
