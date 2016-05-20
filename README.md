@@ -1,5 +1,8 @@
 # utilities
 This holds all my default projects
+This is a combination tutorial for api's that i use as well as helper methods to make things easier to use.
+For instance plotting is very easy to use as well as File actions like finding recursively in a directory that contains text or all extensions ect.
+
 
 commit.sh is to be used from git console
 simply inside [] are optional with the value after : is the default
