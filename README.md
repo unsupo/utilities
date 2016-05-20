@@ -11,6 +11,21 @@ simply inside [] are optional with the value after : is the default
 then type your username and password on the prompt
 
 add it in as a maven dependency
+Step 1. Add the JitPack repository to your build file
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+Step 2. Add the dependency
+
+	<dependency>
+	    <groupId>com.github.unsupo</groupId>
+	    <artifactId>utilities</artifactId>
+	    <version>133562433b</version>
+	</dependency>
+
 [![](https://jitpack.io/v/unsupo/utilities.svg)](https://jitpack.io/#unsupo/utilities)
 
 
