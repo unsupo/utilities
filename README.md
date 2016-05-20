@@ -10,6 +10,9 @@ simply inside [] are optional with the value after : is the default
 
 then type your username and password on the prompt
 
+add it in as a maven dependency
+[![](https://jitpack.io/v/unsupo/utilities.svg)](https://jitpack.io/#unsupo/utilities)
+
 
 
 Plot class is very useful.
