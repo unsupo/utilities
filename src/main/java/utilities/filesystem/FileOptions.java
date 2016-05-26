@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class FileOptions {
@@ -79,11 +80,13 @@ public class FileOptions {
 		br.close();
 		return result;
 	}
-	
-	
-	
-	public static List<File> getAllFilesEndsWith(String path, String endsWith) throws IOException{
-		
+
+
+	public static List<File> getAllFilesRegex(String path, String regex) throws IOException {
+		List<File> files = new ArrayList<>();
+		_getAllFiles(path, files);
+		return files.stream().filter(a-> Pattern.compile(regex).matcher(a.getName()).find()).collect(Collectors.toList());
+	}public static List<File> getAllFilesEndsWith(String path, String endsWith) throws IOException{
 		List<File> files = new ArrayList<>();
 		_getAllFiles(path,files);
 		return files.stream().filter(a->a.getName().endsWith(endsWith)).collect(Collectors.toList());
@@ -96,6 +99,7 @@ public class FileOptions {
 		_getAllFiles(path,files);
 		return files;
 	}private static void _getAllFiles(String path,List<File> files) throws IOException{
+		if(!Files.isReadable(Paths.get(path))) return;
 		for(File f : new File(path).listFiles())
 			if(f.isDirectory())
 				_getAllFiles(f.getAbsolutePath(), files);
