@@ -46,7 +46,7 @@ public class FileOptions {
 	}
 	
 	public static void runProcess(String process, String...dir){
-		String udir = System.getProperty("user.dir);
+		String udir = System.getProperty("user.dir");
 		if(dir != null && dir.length != 0)
 			udir = dir[0];
 	    	List<String> evn = System.getenv().entrySet().stream().map(a -> a.getKey() + "=" + a.getValue()).collect(Collectors.toList());
