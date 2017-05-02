@@ -45,7 +45,7 @@ public class FileOptions {
 		Files.delete(new File(path).toPath());
 	}
 	
-	public static void runProcess(String process, String...dir){
+	public static void runProcess(String process, String...dir) throws IOException {
 		String udir = System.getProperty("user.dir");
 		if(dir != null && dir.length != 0)
 			udir = dir[0];
