@@ -45,6 +45,32 @@ public class FileOptions {
 		Files.delete(new File(path).toPath());
 	}
 	
+	public static void runProcess(String process, String...dir){
+		String udir = System.getProperty("user.dir);
+		if(dir != null && dir.length != 0)
+			udir = dir[0];
+	    	List<String> evn = System.getenv().entrySet().stream().map(a -> a.getKey() + "=" + a.getValue()).collect(Collectors.toList());
+	    	Process p = Runtime.getRuntime().exec(process,evn.toArray(new String[evn.size()]),new File(udir));
+	    	new Thread(new Runnable() {
+			public void run() {
+		 	   BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		 	   BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		 	   String line = null;
+
+		 	   try {
+				while ((line = input.readLine()) != null)
+				    System.out.println(line);
+				while ((line = error.readLine()) != null)
+				    System.out.println(line);
+		 	   } catch (IOException e) {
+				e.printStackTrace();
+			    }
+			}
+		    }).start();
+
+		    p.waitFor();
+	}
+	
 	
 	public static void writeToFileOverWrite(String filePath, String contents) throws IOException{
 		FileOutputStream out = new FileOutputStream(filePath);
