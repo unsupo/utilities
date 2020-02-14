@@ -5,3 +5,4 @@ test.db
 .settings
 .idea
 githelp.txt
+*.iml
