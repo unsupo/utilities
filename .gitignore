@@ -1,1 +1,7 @@
 /target/
+.classpath
+.project
+test.db
+.settings
+.idea
+githelp.txt

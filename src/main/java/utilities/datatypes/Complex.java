@@ -2,10 +2,10 @@ package utilities.datatypes;
 
 /******************************************************************************
  * Complex.java
- * Copyright © 2000–2011, Robert Sedgewick and Kevin Wayne. 
+ * Copyright  2000 2011, Robert Sedgewick and Kevin Wayne.
  * Last updated: Sun Aug 2 18:43:37 EDT 2015.
  * 
- * Below is the syntax highlighted version of Complex.java from §9.7 Data Analysis.
+ * Below is the syntax highlighted version of Complex.java from 9.7 Data Analysis.
  * 
  *  Compilation:  javac Complex.java
  *  Execution:    java Complex
