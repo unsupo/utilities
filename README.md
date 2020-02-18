@@ -23,7 +23,7 @@ Step 2. Add the dependency
 	<dependency>
 	    <groupId>com.github.unsupo</groupId>
 	    <artifactId>utilities</artifactId>
-	    <version>08ab05d72b</version>
+	    <version>master-SNAPSHOT</version>
 	</dependency>
 
 [![](https://jitpack.io/v/unsupo/utilities.svg)](https://jitpack.io/#unsupo/utilities)
